@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:5000';
+
 export default function QuizApp() {
   const [a, setA] = useState(1);
   const [b, setB] = useState(2);
@@ -18,23 +20,25 @@ export default function QuizApp() {
       const encryptedAnswer = answer;
       const encryptedExplanation = explanation;
 
-      const response = await fetch(`${API_URL}/api/quiz`, { ... });
+      const response = await fetch(`${API_URL}/api/quiz`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           a: encryptedA,
           b: encryptedB,
           user_answer: encryptedAnswer,
-          explanation: encryptedExplanation
-        })
+          explanation: encryptedExplanation,
+        }),
       });
+
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
-      setResult(data.result.feedback);
-    } catch (error) {
-      setResult(`Backend connection error! HTTP ${error.message}`);
+      setResult(data.result?.feedback ?? 'No response');
+    } catch (error: any) {
+      setResult(`Backend connection error! ${error?.message ?? ''}`);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
