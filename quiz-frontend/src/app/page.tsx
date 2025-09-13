@@ -18,7 +18,7 @@ export default function QuizApp() {
       const encryptedAnswer = answer;
       const encryptedExplanation = explanation;
 
-      const response = await fetch('http://localhost:5000/api/quiz', {
+      const response = await fetch(`${API_URL}/api/quiz`, { ... });
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
