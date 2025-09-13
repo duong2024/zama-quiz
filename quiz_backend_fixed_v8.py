@@ -66,7 +66,7 @@ def process_quiz():
         "feedback": feedback
     }
     return jsonify({"result": result})
-@app.get("/")
+@app.route("/", methods=["GET"])
 def health():
     return "ok", 200
 
