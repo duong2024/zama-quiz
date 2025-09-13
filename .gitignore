@@ -1,5 +1,7 @@
+cat >> .gitignore <<'EOF'
+quiz-frontend/node_modules/
 venv/
 __pycache__/
 *.pyc
-.idea/
-.DS_Store
+.artifacts/
+EOF
