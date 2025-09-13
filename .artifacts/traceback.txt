@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/concrete/fhe/compilation/module_compiler.py", line 423, in compile
+    ).convert_many(graphs, mlir_context)
+  File "/usr/local/lib/python3.10/dist-packages/concrete/fhe/mlir/converter.py", line 107, in convert_many
+    def main(*args):
+  File "/usr/local/lib/python3.10/dist-packages/mlir/dialects/_func_ops_ext.py", line 187, in decorator
+    return_values = f(*func_args, **func_kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/concrete/fhe/mlir/converter.py", line 129, in main
+    self.node(ctx, node, preds)
+  File "/usr/local/lib/python3.10/dist-packages/concrete/fhe/mlir/converter.py", line 310, in node
+    conversion = converter(ctx, node, preds)
+  File "/usr/local/lib/python3.10/dist-packages/concrete/fhe/mlir/converter.py", line 922, in truncate_bit_pattern
+    return ctx.truncate_bit_pattern(preds[0], node.properties["kwargs"]["lsbs_to_remove"])
+  File "/usr/local/lib/python3.10/dist-packages/concrete/fhe/mlir/context.py", line 3919, in truncate_bit_pattern
+    assert x.bit_width > lsbs_to_remove
+AssertionError
