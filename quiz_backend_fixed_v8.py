@@ -66,6 +66,9 @@ def process_quiz():
         "feedback": feedback
     }
     return jsonify({"result": result})
+@app.get("/")
+def health():
+    return "ok", 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
